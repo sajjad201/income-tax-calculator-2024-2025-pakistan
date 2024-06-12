@@ -90,12 +90,15 @@
                 return;
             }
 
+            let yearlyIncome = income;
             if (period === 'monthly') {
-                income *= 12;
+                yearlyIncome *= 12;
             }
 
-            let tax = calculateTax(income);
-            document.getElementById('result').innerText = `For an ${period} income of Rs. ${income.toFixed(2)}, the tax is Rs. ${tax.toFixed(2)}.`;
+            let yearlyTax = calculateTax(yearlyIncome);
+            let tax = period === 'monthly' ? yearlyTax / 12 : yearlyTax;
+
+            document.getElementById('result').innerText = `For a ${period} income of Rs. ${income.toFixed(2)}, the tax is Rs. ${tax.toFixed(2)}.`;
         });
 
         function calculateTax(income) {
