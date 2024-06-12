@@ -1,23 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Income Tax Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        input[type="number"], select {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        p {
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-    <h1>Income Tax Calculator</h1>
-    <form id="taxForm">
-        <label for="income">Enter your annual income (in Rs):</label>
-        <input type="number" id="income" name="income" required>
-        <input type="submit" value="Calculate Tax">
-    </form>
-    <p id="result"></p>
+    <div class="container">
+        <h1>Income Tax Calculator</h1>
+        <form id="taxForm">
+            <label for="income">Enter your income (in Rs):</label>
+            <input type="number" id="income" name="income" required min="0">
+            <label for="period">Select period:</label>
+            <select id="period" name="period" required>
+                <option value="yearly">Yearly</option>
+                <option value="monthly">Monthly</option>
+            </select>
+            <input type="submit" value="Calculate Tax">
+        </form>
+        <p id="result"></p>
+        <p id="error" class="error"></p>
+    </div>
 
     <script>
         document.getElementById('taxForm').addEventListener('submit', function(event) {
             event.preventDefault();
             let income = parseFloat(document.getElementById('income').value);
+            let period = document.getElementById('period').value;
+            let errorElement = document.getElementById('error');
+            errorElement.innerText = '';
+
+            if (isNaN(income) || income < 0) {
+                errorElement.innerText = 'Please enter a valid income.';
+                return;
+            }
+
+            if (period === 'monthly') {
+                income *= 12;
+            }
+
             let tax = calculateTax(income);
-            document.getElementById('result').innerText = `For an income of Rs. ${income.toFixed(2)}, the tax is Rs. ${tax.toFixed(2)}.`;
+            document.getElementById('result').innerText = `For an ${period} income of Rs. ${income.toFixed(2)}, the tax is Rs. ${tax.toFixed(2)}.`;
         });
 
         function calculateTax(income) {
