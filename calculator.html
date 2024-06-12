@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Income Tax Calculator</title>
+</head>
+<body>
+    <h1>Income Tax Calculator</h1>
+    <form id="taxForm">
+        <label for="income">Enter your annual income (in Rs):</label>
+        <input type="number" id="income" name="income" required>
+        <input type="submit" value="Calculate Tax">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('taxForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let income = parseFloat(document.getElementById('income').value);
+            let tax = calculateTax(income);
+            document.getElementById('result').innerText = `For an income of Rs. ${income.toFixed(2)}, the tax is Rs. ${tax.toFixed(2)}.`;
+        });
+
+        function calculateTax(income) {
+            if (income <= 600000) {
+                return 0;
+            } else if (income > 600000 && income <= 1200000) {
+                return 0.05 * (income - 600000);
+            } else if (income > 1200000 && income <= 2200000) {
+                return 30000 + 0.15 * (income - 1200000);
+            } else if (income > 2200000 && income <= 3200000) {
+                return 180000 + 0.25 * (income - 2200000);
+            } else if (income > 3200000 && income <= 4100000) {
+                return 430000 + 0.30 * (income - 3200000);
+            } else if (income > 4100000) {
+                return 700000 + 0.35 * (income - 4100000);
+            }
+        }
+    </script>
+</body>
+</html>
