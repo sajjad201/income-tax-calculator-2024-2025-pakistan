@@ -25,7 +25,7 @@ The calculator will display the monthly tax amount for the entered income.
 
 ## Live Demo
 
-You can access the live demo of the Income Tax Calculator [here](https://your-github-username.github.io/income-tax-calculator/).
+You can access the live demo of the Income Tax Calculator [here](https://sajjad201.github.io/income-tax-calculator-2024-2025-pakistan/index.html/).
 
 ## Contributing
 
@@ -41,7 +41,7 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any inquiries or feedback, please contact [your-email@example.com].
+For any inquiries or feedback, please contact [asajjad201@gmail.com].
 
 ---
 
