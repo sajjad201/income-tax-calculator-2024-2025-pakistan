@@ -1,1 +1,0 @@
-# income-tax-calculator-2024-2025-pakistan
