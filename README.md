@@ -25,7 +25,7 @@ The calculator will display the monthly tax amount for the entered income.
 
 ## Live Demo
 
-You can access the live demo of the Income Tax Calculator [here](https://sajjad201.github.io/income-tax-calculator-2024-2025-pakistan/index.html/).
+You can access the live demo of the Income Tax Calculator [here](https://sajjad201.github.io/income-tax-calculator-2024-2025-pakistan).
 
 ## Contributing
 
